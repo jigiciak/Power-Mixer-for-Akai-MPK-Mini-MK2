@@ -13,7 +13,6 @@ class PowerMixer(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.timer = QTimer()
         self.ui.pushMIDI.clicked.connect(self.control_timer)
-        self.ui.pushScan.clicked.connect(self.scan_processes)
         self.ui.listProcess0.currentTextChanged.connect(lambda x: self.assign_slider(self.ui.listProcess0.currentText(),
                                                                                      self.ui.sliderProcess0))
         self.ui.listProcess1.currentTextChanged.connect(lambda x: self.assign_slider(self.ui.listProcess1.currentText(),
@@ -46,6 +45,7 @@ class PowerMixer(QtWidgets.QMainWindow):
         self.update_processes(self.processList)
 
     def control_timer(self):
+        self.scan_processes()
         if not self.timer.isActive():
             self.timer.start()
             self.midiIn.open_port(0)
@@ -81,7 +81,6 @@ class PowerMixer(QtWidgets.QMainWindow):
         try:
             sessions = AudioUtilities.GetAllSessions()
             for session in sessions:
-
                 if session.Process:
                     self.volumeList.append(cast(session.SimpleAudioVolume, POINTER(ISimpleAudioVolume)))
                     self.processList.append(session.Process.name())
@@ -115,7 +114,7 @@ class PowerMixer(QtWidgets.QMainWindow):
             slider.setDisabled(1)
 
     def update_volume(self, slider, volume):
-        print(volume, slider.value())
+        # print(volume, slider.value())
         self.volumeList[volume].SetMasterVolume(slider.value()/100, None)
 
 if __name__ == "__main__":
