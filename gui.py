@@ -14,11 +14,8 @@ class Ui_MainWindow(object):
         MainWindow.resize(352, 293)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.pushScan = QtWidgets.QPushButton(self.centralwidget)
-        self.pushScan.setGeometry(QtCore.QRect(10, 10, 161, 31))
-        self.pushScan.setObjectName("pushScan")
         self.pushMIDI = QtWidgets.QPushButton(self.centralwidget)
-        self.pushMIDI.setGeometry(QtCore.QRect(180, 10, 161, 31))
+        self.pushMIDI.setGeometry(QtCore.QRect(10, 10, 161, 31))
         self.pushMIDI.setObjectName("pushMIDI")
         self.listProcess0 = QtWidgets.QComboBox(self.centralwidget)
         self.listProcess0.setGeometry(QtCore.QRect(10, 50, 91, 22))
@@ -156,7 +153,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Power Mixer"))
-        self.pushScan.setText(_translate("MainWindow", "Scan Processes"))
         self.pushMIDI.setText(_translate("MainWindow", "Open MIDI Port"))
         self.label.setText(_translate("MainWindow", "%"))
         self.label_2.setText(_translate("MainWindow", "%"))
